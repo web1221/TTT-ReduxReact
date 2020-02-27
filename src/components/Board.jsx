@@ -23,8 +23,6 @@ class Board extends React.Component {
    restartGame(){
     this.props.dispatch({
       type: 'RESTART_GAME',
-      squares: this.props.squares,
-      xIsNext: this.props.xIsNext,
     })
   }
   render() {
