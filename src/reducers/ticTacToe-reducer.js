@@ -1,7 +1,6 @@
 import CalculateWinner from '../components/CalculateWinner'
 
 export default (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case 'TAKE_TURN':
     const squares = state.squares.slice();
