@@ -1,5 +1,3 @@
-import React from 'react';
-import Board from './../components/Board';
 import CalculateWinner from '../components/CalculateWinner'
 
 export default (state = initialState, action) => {

@@ -1,8 +1,5 @@
 import React from 'react';
 import Board from './Board';
-import CalculateWinner from './CalculateWinner'
-import { connect } from 'react-redux'
-
 
 class Game extends React.Component {
   render() {
