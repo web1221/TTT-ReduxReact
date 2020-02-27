@@ -3,6 +3,7 @@ import Board from './Board';
 import CalculateWinner from './CalculateWinner'
 import { connect } from 'react-redux'
 
+
 class Game extends React.Component {
   constructor(props) {
     super(props)
@@ -16,24 +17,18 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
-    const winner = CalculateWinner(current.squares)
-
     const { dispatch } = this.props
 
-    const squares = current.squares.slice();
-    if (CalculateWinner(squares) || squares[i]) {
-      return
+    const action = {
+      type: 'TAKE_TURN',
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      location: i,
+      stepNumber: 0,
+      xIsNext: true,
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      history: history.concat([{
-        squares: squares,
-      }]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
-    });
+    dispatch(action)
   }
 
   jumpTo(step) {
@@ -44,7 +39,9 @@ class Game extends React.Component {
   }
 
   render() {
-    const history = this.state.history;
+
+    console.log(getState());
+    const history = history;
     const current = history[this.state.stepNumber];
     const winner = CalculateWinner(current.squares)
 
@@ -81,5 +78,16 @@ class Game extends React.Component {
   }
 }
 
-Game = connect()(Game)
+const mapStateToProps = state => {
+  return {
+    history: [{
+      squares: Array(9).fill(null),
+    }],
+    stepNumber: 0,
+    xIsNext: true,
+
+  }
+}
+
+Game = connect(mapStateToProps)(Game)
 export default Game;
