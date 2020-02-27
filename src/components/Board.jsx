@@ -8,8 +8,6 @@ class Board extends React.Component {
   handleClick(i) {
     this.props.dispatch({
       type: 'TAKE_TURN',
-      squares: this.props.squares,
-      xIsNext: this.props.xIsNext,
       location: i
     })
   }
