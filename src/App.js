@@ -2,8 +2,8 @@ import React from 'react';
 import Game from './components/Game';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from './reducers/ticTacToe-reducer'
 import './App.css';
+import reducer from './reducers/ticTacToe-reducer'
 
 const store = createStore(reducer)
 
